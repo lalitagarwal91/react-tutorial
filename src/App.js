@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+class App extends React.Component {
+  state = {
+    name: "Lalit",
+    age: 30
+  };
+  handleClick = e => {
+    // console.log(e.target);
+    console.log(this.state);
+    this.setState({
+      name: "Shyam",
+      age: 28
+    });
+  };
+  handleMouseOver = e => {
+    console.log(this.state);
+    console.log(e.target, e.pageX);
+  };
+  handleCopy = e => {
+    console.log("Try being original once!");
+  };
+  render() {
+    return (
+      <div className="container">
+        <h1>Hey, Friends</h1>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          My name is {this.state.name}. I am {this.state.age}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+        <button onClick={this.handleClick}>Click Me</button>
+        <button onMouseOver={this.handleMouseOver}>Hover Me</button>
+        <p onCopy={this.handleCopy}>What we think, we become</p>
+      </div>
+    );
+  }
 }
-
 export default App;
