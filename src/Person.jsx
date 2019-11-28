@@ -1,6 +1,6 @@
 import React from "react";
 
-const Person = ({ persons }) => {
+const Person = ({ persons, deletePerson }) => {
   // const Person = props => {
   // const { persons } = props; //we can directly extract props value in function parameter
   const personList = persons.map((person, index) => {
@@ -15,9 +15,16 @@ const Person = ({ persons }) => {
     //   return null;
     // }
     return person.age > 20 ? ( //in place of if statement we can use ternary operator
-      <div className="row" key={`${index}_${person.id}`}>
+      <div key={`${index}_${person.id}`}>
         <div>My name is {person.name}</div>
         <div>My age is {person.age}</div>
+        <button
+          onClick={() => {
+            deletePerson(person.id);
+          }}
+        >
+          Delete Me
+        </button>
       </div>
     ) : null;
   });
